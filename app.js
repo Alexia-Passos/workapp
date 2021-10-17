@@ -1,10 +1,12 @@
 const express = require('express');
 const app = express();
+const cors = require('cors')
 require('dotenv').config();
 const models = require('./database/models');
 const routerUsers = require('./routes/userRouter');
 const routerWorks = require('./routes/workRouter');
 
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const connect = async () => {
