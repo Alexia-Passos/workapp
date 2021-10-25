@@ -28,7 +28,7 @@ const workController = {
 
   getById: async (req, res) => {
     try {
-      const { id } = req.params;
+      const { id } = req.query;
       let work = await db.Work.findOne({ 
         include: [{
           model: db.User,
@@ -99,7 +99,7 @@ const workController = {
 
   alterWork: async (req, res) => {
     try {
-      const { id } = req.params;
+      const { id } = req.query;
       const work = await db.Work.findOne({ where: { id } });
       if (work) {
         const { workName, description, status, 
@@ -123,7 +123,7 @@ const workController = {
   },
 
   deleteWork: async (req, res) => {
-    const { id } = req.params;
+    const { id } = req.query;
 
     // Excluir da tabela Work
     try {

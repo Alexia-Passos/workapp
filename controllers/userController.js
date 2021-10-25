@@ -19,7 +19,7 @@ const userController = {
 
   getById: async (req, res) => {
     try {
-      const { id } = req.params;
+      const { id } = req.query;
       let user = await db.User.findOne({
         include: {
           model: db.Address,
@@ -74,7 +74,7 @@ const userController = {
 
   alterUser: async (req, res) => {
     try {
-      const { id } = req.params;
+      const { id } = req.query;
       const user = await db.User.findOne({ where: { id } });
       if (user) {
         const { firstName, lastName, cpf, whatsapp, instagram, facebook, profile, email, cep, city, uf } = req.body;
@@ -93,7 +93,7 @@ const userController = {
   },
 
   deleteUser: async (req, res) => {
-    const { id } = req.params;
+    const { id } = req.query;
 
     //Excluir da tabela 'Users'
     try {
